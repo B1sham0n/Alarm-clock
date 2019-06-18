@@ -39,6 +39,7 @@
         android:weightSum="4">
         <Switch
             android:id="@+id/newSwitch"
+            android:tag="switch"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:switchMinWidth="50dp"
