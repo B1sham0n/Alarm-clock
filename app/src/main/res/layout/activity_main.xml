@@ -33,29 +33,13 @@
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_margin="3dp">
-            <Button
-                android:id="@+id/buttonPlusHour"
+            <NumberPicker
+                android:id="@+id/numberPickerHour"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="+"
-                android:textSize="20sp"
-                android:background="#dad9dc"
-                />
-            <TextView
-                android:id="@+id/tvHour"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="00"
-                android:textSize="40sp"
-                android:textAlignment="center"
-                android:background="#f8f8f8"/>
-            <Button
-                android:id="@+id/buttonMinusHour"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="-"
-                android:textSize="20sp"
-                android:background="#dad9dc"/>
+                style="@style/numberPickerText"
+                android:descendantFocusability="blocksDescendants">
+            </NumberPicker>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -63,28 +47,13 @@
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_margin="3dp">
-            <Button
-                android:id="@+id/buttonPlusMinute"
+            <NumberPicker
+                android:id="@+id/numberPickerMinute"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="+"
-                android:textSize="20sp"
-                android:background="#dad9dc"/>
-            <TextView
-                android:id="@+id/tvMinute"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="00"
-                android:textSize="40sp"
-                android:textAlignment="center"
-                android:background="#f8f8f8"/>
-            <Button
-                android:id="@+id/buttonMinusMinute"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="-"
-                android:textSize="20sp"
-                android:background="#dad9dc"/>
+                style="@style/numberPickerText"
+                android:descendantFocusability="blocksDescendants">
+            </NumberPicker>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout

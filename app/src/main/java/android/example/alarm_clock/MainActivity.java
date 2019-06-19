@@ -26,6 +26,7 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.NumberPicker;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     Intent intent1;
     PendingIntent pIntent1;
     ArrayList<Calendar> arrCl;
+    NumberPicker numberPickerHour, numberPickerMinute;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,21 +59,21 @@ public class MainActivity extends AppCompatActivity {
         arrCl = new ArrayList<>();
         am = (AlarmManager) getSystemService(ALARM_SERVICE);
         
-        btnPlusHour = findViewById(R.id.buttonPlusHour);
-        btnPlusHour.setOnClickListener(btnTime);
+        //btnPlusHour = findViewById(R.id.buttonPlusHour);
+        //btnPlusHour.setOnClickListener(btnTime);
 
-        btnMinusHour = findViewById(R.id.buttonMinusHour);
-        btnMinusHour.setOnClickListener(btnTime);
+       // btnMinusHour = findViewById(R.id.buttonMinusHour);
+       // btnMinusHour.setOnClickListener(btnTime);
 
-        btnMinusMinute = findViewById(R.id.buttonMinusMinute);
-        btnMinusMinute.setOnClickListener(btnTime);
+        //btnMinusMinute = findViewById(R.id.buttonMinusMinute);
+       // btnMinusMinute.setOnClickListener(btnTime);
 
-        btnPlusMinute = findViewById(R.id.buttonPlusMinute);
-        btnPlusMinute.setOnClickListener(btnTime);
+        //btnPlusMinute = findViewById(R.id.buttonPlusMinute);
+       // btnPlusMinute.setOnClickListener(btnTime);
 
-        tvHour = findViewById(R.id.tvHour);
+        //tvHour = findViewById(R.id.tvHour);
 
-        tvMinute = findViewById(R.id.tvMinute);
+        //tvMinute = findViewById(R.id.tvMinute);
 
         btnAdd = findViewById(R.id.buttonAdd);
         btnAdd.setOnClickListener(btnAddTime);
@@ -90,6 +92,12 @@ public class MainActivity extends AppCompatActivity {
         mainChild.addView(addTVHour);
         mainChild.addView(addBtnOn);
         //ненужный код
+        numberPickerHour = findViewById(R.id.numberPickerHour);
+        numberPickerMinute = findViewById(R.id.numberPickerMinute);
+        numberPickerHour.setMaxValue(23);
+        numberPickerHour.setMinValue(0);
+        numberPickerMinute.setMaxValue(59);
+        numberPickerMinute.setMinValue(0);
 
 
 
@@ -141,6 +149,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             System.out.println("___iamhere");
+            hour = numberPickerHour.getValue();
+            minute = numberPickerMinute.getValue();
 
             View childView;
             Context mContext = getApplicationContext();
@@ -184,7 +194,8 @@ public class MainActivity extends AppCompatActivity {
             updateIdButton(addBtnDel);
             intent1 = createIntent(Integer.toString(addSwitch.getId()), "Clock");
             pIntent1 = PendingIntent.getBroadcast(getApplicationContext(), addSwitch.getId(), intent1, 0);
-            arrPI.add(root.getChildCount()-1, pIntent1);
+            if(root.getChildCount()-1 > arrPI.size()-1)
+                arrPI.add(root.getChildCount()-1, pIntent1);
             Calendar tempCal = Calendar.getInstance();
             tempCal.set(Calendar.HOUR, hour);
             tempCal.set(Calendar.MINUTE,minute);

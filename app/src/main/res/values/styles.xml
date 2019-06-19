@@ -7,5 +7,7 @@
         <item name="colorPrimaryDark">#1111</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
+    <style name="numberPickerText">
+        <item name="android:textSize">100sp</item>
+    </style>
 </resources>
