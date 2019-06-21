@@ -8,9 +8,13 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.media.AudioManager;
@@ -51,14 +55,16 @@ public class MainActivity extends AppCompatActivity {
     PendingIntent pIntent1;
     ArrayList<Calendar> arrCl;
     NumberPicker numberPickerHour, numberPickerMinute;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        System.out.println("i am created!!!");
         arrPI = new ArrayList<>();
         arrCl = new ArrayList<>();
         am = (AlarmManager) getSystemService(ALARM_SERVICE);
-        
+
         //btnPlusHour = findViewById(R.id.buttonPlusHour);
         //btnPlusHour.setOnClickListener(btnTime);
 
@@ -152,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
             hour = numberPickerHour.getValue();
             minute = numberPickerMinute.getValue();
 
+
             View childView;
             Context mContext = getApplicationContext();
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -192,6 +199,7 @@ public class MainActivity extends AppCompatActivity {
             //System.out.println("iamid" + addSwitch.getId());
             updateIdSwitch();
             updateIdButton(addBtnDel);
+
             intent1 = createIntent(Integer.toString(addSwitch.getId()), "Clock");
             pIntent1 = PendingIntent.getBroadcast(getApplicationContext(), addSwitch.getId(), intent1, 0);
             if(root.getChildCount()-1 > arrPI.size()-1)
@@ -213,6 +221,7 @@ public class MainActivity extends AppCompatActivity {
     View.OnClickListener btnRemove = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+
             root.removeViewAt((Integer) view.getId());
             System.out.println(view.getId());
             updateIdButton((Button) view);
@@ -321,4 +330,7 @@ public class MainActivity extends AppCompatActivity {
         notificationManager.notify(1, builder.build());
 
     }
+
+
 }
+
